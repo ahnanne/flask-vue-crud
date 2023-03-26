@@ -1,7 +1,6 @@
 <template>
   <div class="ping">
-    <h1>{{ msg }}</h1>
-    <p>test</p>
+    <h1 class="text-3xl font-bold underline">{{ msg }}</h1>
   </div>
 </template>
 
