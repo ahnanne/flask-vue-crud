@@ -52,7 +52,9 @@ export default {
 
   methods: {
     getMessage() {
-      const path = "http://localhost:5000/ping";
+      const path = `http://localhost:5000/ping/${
+        this.$route.query.name || "guest"
+      }`;
 
       axios
         .get(path)

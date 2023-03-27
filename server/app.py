@@ -13,10 +13,10 @@ app.config.from_object(__name__)
 CORS(app, resources={r'/*': {'origins': '*'}})
 
 
-# sanity check route
-@app.route('/ping', methods=['GET'])
-def ping_pong():
-    return jsonify('pong!?')
+# 동적 라우팅
+@app.route('/ping/<name>', methods=['GET'])
+def ping_pong_name(name):
+    return jsonify('User: {}'.format(name))
 
 
 if __name__ == '__main__':
