@@ -17,9 +17,10 @@ app.config.from_object(__name__)
 
 # SQLite DB 구축
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # 추가적인 메모리를 요하므로 꺼둔다.
 
 db = SQLAlchemy(app)
+app.app_context().push()
 
 ###################### 모델 생성 ######################
 # 모델은 DB에 테이블을 설정하는 것과 같다.
@@ -29,6 +30,7 @@ class Puppy(db.Model):
     __tablename__ = 'puppies'
 
 
+    # 참고로 SQLite에서 인덱스는 1부터 시작한다고 함.
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.Text)
     age = db.Column(db.Integer)
@@ -39,6 +41,23 @@ class Puppy(db.Model):
 
     def __repr__(self) -> str:
         return f"Puppy {self.name} is {self.age} year/s old"
+
+
+# CREATES ALL THE TABLES MODEL --> DB TABLE
+db.create_all()
+
+puppy1 = Puppy('Sammy', 3)
+puppy2 = Puppy('Frankie', 4)
+
+db.session.add_all([puppy1, puppy2])
+# 각각 추가하려는 경우에는 다음과 같이..
+# db.session.add(puppy1)
+# db.session.add(puppy2)
+
+# 변경 사항을 데이터베이스에 저장
+db.session.commit()
+
+print("ids: ", puppy1.id, puppy2.id)
 
 
 # enable CORS
