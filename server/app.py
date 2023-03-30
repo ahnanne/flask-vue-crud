@@ -19,7 +19,3 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 def ping_pong_name(name):
     print(request)
     return jsonify('User: {}'.format(name))
-
-
-if __name__ == '__main__':
-    app.run()
