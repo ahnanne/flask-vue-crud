@@ -6,7 +6,7 @@ app_ctx.push()
 
 
 ## CREATE ##
-my_puppy = Puppy('Rufus', 5)
+my_puppy = Puppy('Rufus', 5, '시츄')
 db.session.add(my_puppy)
 db.session.commit()
 

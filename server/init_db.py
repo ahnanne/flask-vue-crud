@@ -17,20 +17,22 @@ class Puppy(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     age = db.Column(db.Integer)
+    breed = db.Column(db.Text)
 
-    def __init__(self, name, age) -> None:
+    def __init__(self, name, age, breed) -> None:
         self.name = name
         self.age = age
+        self.breed = breed
 
     def __repr__(self) -> str:
-        return f"[id: {self.id}] Puppy {self.name} is {self.age} year/s old"
+        return f"[id: {self.id} / breed: {self.breed}] Puppy {self.name} is {self.age} year/s old"
 
 
 # CREATES ALL THE TABLES MODEL --> DB TABLE
 db.create_all()
 
-puppy1 = Puppy('Sammy', 3)
-puppy2 = Puppy('Frankie', 4)
+puppy1 = Puppy('Sammy', 3, '말티즈')
+puppy2 = Puppy('Frankie', 4, '커여운 슈나우저')
 
 db.session.add_all([puppy1, puppy2])
 # 각각 추가하려는 경우에는 다음과 같이..
