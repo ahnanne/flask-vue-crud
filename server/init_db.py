@@ -71,21 +71,7 @@ class Owner(db.Model):
         self.puppy_id = puppy_id
 
 
-# CREATES ALL THE TABLES MODEL --> DB TABLE
 db.create_all()
-
-puppy1 = Puppy('Sammy', 3, '말티즈')
-puppy2 = Puppy('Frankie', 4, '커여운 슈나우저')
-
-db.session.add_all([puppy1, puppy2])
-# 각각 추가하려는 경우에는 다음과 같이..
-# db.session.add(puppy1)
-# db.session.add(puppy2)
-
-# 변경 사항을 데이터베이스에 저장
-db.session.commit()
-
-print("ids: ", puppy1.id, puppy2.id)
 
 
 app_ctx.pop()
