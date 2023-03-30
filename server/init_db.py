@@ -1,21 +1,8 @@
-import os
-from app import app
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
+from app import app, db
+
 
 app_ctx = app.app_context()
 app_ctx.push()
-
-# __file__: the file this module was loaded from
-basedir = os.path.abspath(os.path.dirname(__file__))
-
-
-# SQLite DB 구축
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # 추가적인 메모리를 요하므로 꺼둔다.
-
-db = SQLAlchemy(app)
-migrate = Migrate(app, db) # Migrate 객체 생성
 
 
 ###################### 모델 생성 ######################
