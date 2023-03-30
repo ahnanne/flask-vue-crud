@@ -1,13 +1,11 @@
 import os
 from app import app
-from flask import current_app
 from flask_sqlalchemy import SQLAlchemy
 
 app_ctx = app.app_context()
 app_ctx.push()
 
 # __file__: the file this module was loaded from
-# basedir: /Users/an-yein/flask-vue-crud/server
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -26,7 +24,7 @@ class Puppy(db.Model):
     __tablename__ = 'puppies'
 
 
-    # 참고로 SQLite에서 인덱스는 1부터 시작한다고 함.
+    # DB 인덱스는 1부터 시작
     id = db.Column(db.Integer,primary_key=True)
     name = db.Column(db.Text)
     age = db.Column(db.Integer)
@@ -36,7 +34,7 @@ class Puppy(db.Model):
         self.age = age
 
     def __repr__(self) -> str:
-        return f"Puppy {self.name} is {self.age} year/s old"
+        return f"[id: {self.id}] Puppy {self.name} is {self.age} year/s old"
 
 
 # CREATES ALL THE TABLES MODEL --> DB TABLE
