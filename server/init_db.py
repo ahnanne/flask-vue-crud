@@ -14,11 +14,11 @@ class Puppy(db.Model):
 
 
     # DB 인덱스는 1부터 시작
-    id = db.Column(db.Integer,primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     age = db.Column(db.Integer)
 
-    def __init__(self,name,age) -> None:
+    def __init__(self, name, age) -> None:
         self.name = name
         self.age = age
 

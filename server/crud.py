@@ -12,7 +12,7 @@ db.session.commit()
 
 
 ## READ ##
-all_puppies = Puppy.query.all() # 테이블에 있는 모든 강아지 객체들
+all_puppies = Puppy.query.all()  # 테이블에 있는 모든 강아지 객체들
 print(all_puppies)
 
 # FILTERS
@@ -20,7 +20,7 @@ puppy2 = Puppy.query.filter_by(name='Frankie').all()
 
 # SELECT BY ID
 puppy1 = Puppy.query.get(1)
-if puppy1 == None:
+if puppy1 is None:
     puppy1 = puppy2[0]
 else:
     print(puppy1.name)
@@ -34,8 +34,8 @@ db.session.commit()
 
 ## DELETE ##
 puppy3 = Puppy.query.get(2)
-print(puppy3) # 존재하지 않을 경우 None
-if puppy3 != None:
+print(puppy3)  # 존재하지 않을 경우 None
+if puppy3 is not None:
     db.session.delete(puppy3)
     db.session.commit()
 else:
