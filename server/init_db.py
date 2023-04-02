@@ -67,7 +67,7 @@ class Owner(db.Model):
     puppy_id = db.Column(db.Integer, db.ForeignKey('puppies.id'))
 
     def __int__(self, name, puppy_id):
-        self.name = name;
+        self.name = name
         self.puppy_id = puppy_id
 
 
