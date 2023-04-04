@@ -52,16 +52,14 @@ export default {
 
   methods: {
     getMessage() {
-      const path = `http://localhost:5000/ping/${
-        this.$route.query.name || "guest"
-      }`;
+      const path = `http://localhost:5000/ping/${this.$route.query.name || "guest"}`;
 
       axios
         .get(path)
-        .then((res) => {
+        .then(res => {
           this.msg = res.data;
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error);
         });
     },

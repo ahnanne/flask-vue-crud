@@ -22,9 +22,7 @@
             <td class="border border-slate-300">foobar</td>
             <td class="border border-slate-300">
               <div class="btn-group" role="group">
-                <button type="button" class="w-24 bg-stone-700 mr-2">
-                  Update
-                </button>
+                <button type="button" class="w-24 bg-stone-700 mr-2">Update</button>
                 <button type="button" class="w-24 bg-rose-800">Delete</button>
               </div>
             </td>
